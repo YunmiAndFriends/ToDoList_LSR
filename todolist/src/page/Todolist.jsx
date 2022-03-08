@@ -1,21 +1,43 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-
-function Toodolist() {
+import {
+  Container,
+  Title,
+  AddButton,
+  Content,
+  TodoInput,
+  SendButton,
+} from "./Todolist.style";
+function TodoList() {
   const [text, setText] = useState("");
+
+  const [todoItem, setTodoItem] = useState([]);
+
+  const [showAddTodo, setShowAddTodo] = useState(false);
 
   const onChangeText = (e) => {
     setText(e.target.value);
   };
 
+  const onClickAddButton = () => {
+    setShowAddTodo(!showAddTodo);
+  };
+
   return (
-    <div id="container">
-      <div id="title">ToDoList</div>
-      <div id="content"></div>
-      <div>
-        <input type="button" />
-      </div>
-    </div>
+    <Container>
+      <Title>
+        ToDoList<AddButton onClick={onClickAddButton}>추가</AddButton>
+      </Title>
+      <Content>
+        {showAddTodo ? (
+          <>
+            <TodoInput></TodoInput>
+            <SendButton>전송</SendButton>
+          </>
+        ) : (
+          <></>
+        )}
+      </Content>
+    </Container>
   );
 }
-export default Toodolist;
+export default TodoList;

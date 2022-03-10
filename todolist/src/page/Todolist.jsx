@@ -5,7 +5,7 @@ import {
   AddButton,
   Content,
   TodoInput,
-  SendButton,
+  SaveButton,
 } from "./Todolist.style";
 function TodoList() {
   const [text, setText] = useState("");
@@ -22,6 +22,10 @@ function TodoList() {
     setShowAddTodo(!showAddTodo);
   };
 
+const onClickSaveButton = () => {
+  setShowAddTodo(false);
+}
+
   return (
     <Container>
       <Title>
@@ -31,7 +35,7 @@ function TodoList() {
         {showAddTodo ? (
           <>
             <TodoInput></TodoInput>
-            <SendButton>전송</SendButton>
+            <SaveButton onClick={onClickSaveButton}>전송</SaveButton>
           </>
         ) : (
           <></>

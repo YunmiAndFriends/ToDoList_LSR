@@ -33,9 +33,9 @@ const TodoInput = styled.input`
   margin-right: 16px;
 `;
 
-const SendButton = styled.button`
+const SaveButton = styled.button`
   height: 36px;
   background-color: #1a3ccf16;
 `;
 
-export { Container, Title, AddButton, Content, TodoInput, SendButton };
+export { Container, Title, AddButton, Content, TodoInput, SaveButton };

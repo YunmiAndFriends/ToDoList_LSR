@@ -26,16 +26,45 @@ const AddButton = styled.button`
 const Content = styled.div`
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 `;
 
 const TodoInput = styled.input`
   margin-right: 16px;
+  display: flex;
 `;
 
 const SaveButton = styled.button`
-  height: 36px;
-  background-color: #1a3ccf16;
+  width: 11vw;
+  height: 2vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
-export { Container, Title, AddButton, Content, TodoInput, SaveButton };
+const ToDoContent = styled.div``;
+
+const Todo = styled.div``;
+
+const Todosave = styled.div`
+  display: flex;
+`;
+
+const InputContent = styled.div`
+  display: flex;
+`;
+
+export {
+  Container,
+  Title,
+  AddButton,
+  Content,
+  TodoInput,
+  SaveButton,
+  ToDoContent,
+  Todo,
+  Todosave,
+  InputContent,
+};

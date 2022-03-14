@@ -6,6 +6,9 @@ import {
   Content,
   TodoInput,
   SaveButton,
+  ToDoContent,
+  Todo,
+  Todosave,
 } from "./Todolist.style";
 function TodoList() {
   const [text, setText] = useState("");
@@ -13,6 +16,8 @@ function TodoList() {
   const [todoItem, setTodoItem] = useState([]);
 
   const [showAddTodo, setShowAddTodo] = useState(false);
+
+  let count = 0;
 
   const onChangeText = (e) => {
     setText(e.target.value);
@@ -23,7 +28,10 @@ function TodoList() {
   };
 
   const onClickSaveButton = () => {
-    setShowAddTodo(false);
+    const item = { id: count, content: text };
+    setTodoItem(todoItem.concat(item));
+    count++;
+    setText("");
   };
 
   return (
@@ -32,11 +40,16 @@ function TodoList() {
         ToDoList<AddButton onClick={onClickAddButton}>추가</AddButton>
       </Title>
       <Content>
+        <ToDoContent>
+          {todoItem.map(({ id, content }) => (
+            <Todo key={id}>{content}</Todo>
+          ))}
+        </ToDoContent>
         {showAddTodo ? (
-          <>
-            <TodoInput></TodoInput>
+          <Todosave>
+            <TodoInput value={text} onChange={onChangeText}></TodoInput>
             <SaveButton onClick={onClickSaveButton}>저장</SaveButton>
-          </>
+          </Todosave>
         ) : (
           <></>
         )}

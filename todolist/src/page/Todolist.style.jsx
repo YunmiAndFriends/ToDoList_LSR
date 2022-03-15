@@ -36,12 +36,22 @@ const TodoInput = styled.input`
 `;
 
 const SaveButton = styled.button`
-  width: 11vw;
+  width: 4.3vw;
   height: 2vh;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+`;
+
+const DeleteButton = styled.button`
+  width: 4.3vw;
+  height: 2vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 4px;
 `;
 
 const ToDoContent = styled.div``;
@@ -67,4 +77,5 @@ export {
   Todo,
   Todosave,
   InputContent,
+  DeleteButton,
 };

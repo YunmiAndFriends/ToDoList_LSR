@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Container,
   Title,
@@ -9,6 +9,7 @@ import {
   ToDoContent,
   Todo,
   Todosave,
+  DeleteButton,
 } from "./Todolist.style";
 function TodoList() {
   const [text, setText] = useState("");
@@ -17,7 +18,7 @@ function TodoList() {
 
   const [showAddTodo, setShowAddTodo] = useState(false);
 
-  let count = 0;
+  let count = useRef(0);
 
   const onChangeText = (e) => {
     setText(e.target.value);
@@ -28,10 +29,17 @@ function TodoList() {
   };
 
   const onClickSaveButton = () => {
-    const item = { id: count, content: text };
+    const item = { id: count.current, content: text };
+    console.log("item", item);
     setTodoItem(todoItem.concat(item));
-    count++;
+    count.current += 1;
     setText("");
+  };
+
+  const onClickDeleteButton = (delId) => {
+    const save = todoItem.filter(({ id }) => id !== delId);
+    setTodoItem(save);
+    console.log("save", save);
   };
 
   return (
@@ -42,7 +50,9 @@ function TodoList() {
       <Content>
         <ToDoContent>
           {todoItem.map(({ id, content }) => (
-            <Todo key={id}>{content}</Todo>
+            <Todo onClick={() => onClickDeleteButton(id)} key={id}>
+              {content}
+            </Todo>
           ))}
         </ToDoContent>
         {showAddTodo ? (
